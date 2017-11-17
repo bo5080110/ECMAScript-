@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>01_let关键字</title>
+</head>
+<body>
+
+<button>测试1</button>
+<br>
+<button>测试2</button>
+<br>
+<button>测试3</button>
+<br>
+<!--
+***let
+1. 作用:
+  * 与var类似, 用于声明一个变量
+2. 特点:
+  * 在块作用域内有效
+  * 不能重复声明
+  * 不会预处理, 不存在提升
+3. 应用:
+  * 循环遍历加监听
+  * 使用let取代var是趋势
+-->
+<script type="text/javascript">
+  {
+    console.log(a)  // undefined
+  //  console.log(b)  // b is not defined   不会预处理 不会变量提升
+    var a = '123'
+    let b = 'abc'
+    console.log('块' + b)
+
+    var a = '234'
+  //  let b = 'efg'   // 'b' has already been declared  不能重复声明
+  }
+  
+  console.log(a)
+  // console.log(b)  // b is not defined    块作用域有效
+
+
+  var btns = document.getElementsByTagName('button')
+  for (let i = 0, len = btns.length; i < len; i++) {
+      btns[i].onclick = function () {
+        alert(i)
+      }
+
+  }
+  
+</script>
+</body>
+
+</html>

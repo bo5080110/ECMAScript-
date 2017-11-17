@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>02_JSON对象</title>
+</head>
+<body>
+<!--
+1. JSON.stringify(obj/arr)
+  * js对象(数组)转换为json对象(数组)
+2. JSON.parse(json)
+  * json对象(数组)转换为js对象(数组)
+
+-->
+<script type="text/javascript">
+/*
+* JSON的理解：
+* 1. 有特定格式的字符串   可以与js的对象/数组相互转换
+* 2. JSON的分类：
+*           （1 ： json数组：存放多个value，可以是（Number, String, Boolean, Null, Object, Array）
+*           (2):   json对象：以key:value的形式存放， key只能是字符串， value可以是（Number, String, Boolean, Null, Object, Array）
+*
+* */
+    
+  var obj = {
+    name: 'jack',
+    age: 12
+  }
+
+  // js对象 转换为json对象
+
+  var jsonObj = JSON.stringify(obj)
+  console.log(jsonObj, typeof jsonObj)  // string
+
+ // json对象转换为js对象
+  obj = JSON.parse(jsonObj)
+  console.log(obj, typeof obj)     // object
+  
+  // js数组转换为json数组
+  var arr = [1, 2, 3, 4]
+  var jsonArray = JSON.stringify(arr)
+  console.log(jsonArray, typeof jsonArray)  // string
+  
+  // json数组 转换为js数组
+  
+  arr = JSON.parse(jsonArray)
+  console.log(arr, typeof arr)  // object
+
+  console.log(arr instanceof Array)  // true
+
+
+
+  
+</script>
+</body>
+</html>

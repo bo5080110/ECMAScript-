@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box1{
+           height: 10px;
+            margin: 100px 0 0 0;
+          overflow: hidden;
+            width: 1000px;
+            list-style: none;
+        }
+        #box1 li {
+            width: 2px;
+            height: 5px;
+            float: left;
+            background-color: black;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="box1">
+
+    </ul>
+<script type="text/javascript">
+     var ul = document.getElementById('box1')
+     var result = ''
+     for (var i = 0; i <100; i++) {
+        result += '<li></li>'
+     }
+     ul.innerHTML = result
+</script>
+</body>
+</html>

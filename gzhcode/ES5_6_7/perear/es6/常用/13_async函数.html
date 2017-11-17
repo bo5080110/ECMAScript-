@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>async函数</title>
+</head>
+<body>
+
+<!--
+  async函数(源自ES2017)
+  概念： 真正意义上去解决异步回调的问题，同步流程表达异步操作
+  本质： Generator的语法糖
+  语法：
+      async function foo(){
+        await 异步操作;
+        await 异步操作；
+      }
+  特点：
+    1、不需要像Generator去调用next方法，遇到await等待，当前的异步操作完成就往下执行
+    2、返回的总是Promise对象，可以用then方法进行下一步操作
+    3、async取代Generator函数的星号*，await取代Generator的yield
+    4、语意上更为明确，使用简单，经临床验证，暂时没有任何副作用
+
+-->
+<script type="text/javascript" src="./js/jquery-1.10.1.min.js"></script>
+<script type="text/javascript">
+
+
+
+  /*function foo() {
+    return new Promise(resolve => {
+      // 启动我们的异步任务
+      /!*setTimeout(function () {
+        resolve()
+      }, 2000)*!/
+
+      setTimeout(resolve, 2000)
+    })
+  }
+
+  // 创建一个async函数
+  test()
+  async function test() {
+    console.log('开始执行' + new Date().toTimeString())
+    await foo()
+    console.log('执行完毕' + new Date().toTimeString())
+  }
+
+
+  // await 的返回值
+  function test2() {
+    return 'aaa'
+  }
+
+  myAsync()
+  async function myAsync() {
+   let result =  await test2()
+    console.log(result)
+    result = await Promise.resolve('promise')
+    console.log(result)
+    await Promise.reject('rejected')
+
+    console.log('执行完毕')
+  }*/
+
+
+
+  // 获取新闻内容
+
+  function getNews(url) {
+    return new Promise((resolve, reject) => {
+      $.ajax({
+        method: 'get',
+        url,
+        success: data => {
+          console.log(data)
+          resolve(data)
+        },
+        error: error => resolve(false)
+      })
+    })
+  }
+
+  
+
+  //定义一个async 函数
+  async function sendXML() {
+
+    let result = await getNews('http://localhost:30001/news?id=3')
+    console.log(result)
+    if (!result) {
+      alert('当前网络繁忙')
+      return
+    }
+    let url = 'http://localhost:3000' + result.commentsUrl
+    await getNews(url)
+  }
+
+ sendXML()
+</script>
+
+
+</body>
+</html>
